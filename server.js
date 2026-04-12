@@ -40,16 +40,19 @@ app.post('/api/games', async (req, res) => {
         'Client-ID': process.env.VITE_IGDB_CLIENT_ID,
         'Authorization': `Bearer ${accessToken}`,
       },
-      body: 'fields name,rating,release_dates.y,genres.name,platforms.name; limit 100; where rating != null;',
+      body: 'fields name,rating,release_dates.y,genres.name,platforms.name,cover.image_id,screenshots.image_id,summary; limit 100; where rating != null;',
     })
 
     if (!gamesResponse.ok) {
-      throw new Error('Failed to fetch games from IGDB')
+      const errorData = await gamesResponse.json()
+      console.error('IGDB API Error:', errorData)
+      throw new Error(`Failed to fetch games from IGDB: ${JSON.stringify(errorData)}`)
     }
 
     const gamesData = await gamesResponse.json()
     res.json(gamesData)
   } catch (err) {
+    console.error('Server error:', err.message)
     res.status(500).json({ error: err.message })
   }
 })
