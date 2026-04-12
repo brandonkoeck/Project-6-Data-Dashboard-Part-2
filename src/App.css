@@ -4,6 +4,10 @@
   margin: 0 auto;
 }
 
+.container h1 {
+  color: var(--accent);
+}
+
 .stats-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
