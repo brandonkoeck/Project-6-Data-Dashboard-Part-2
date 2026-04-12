@@ -1,0 +1,43 @@
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1.65fr;
+  gap: .1rem;
+  margin: 2rem 0;
+  background: var(--accent-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 350px;
+}
+
+.chart {
+  padding: 1rem;
+}
+
+.chart h3 {
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.chart:first-child {
+  color: var(--accent);
+}
+
+.chart:first-child text {
+  fill: var(--accent) !important;
+}
+
+.game-row.clickable {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.game-row.clickable:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
+}
